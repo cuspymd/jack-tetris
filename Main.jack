@@ -1,0 +1,9 @@
+class Main {
+    function void main() {
+        var Point a;
+
+        let a = Point.new(1, 2);
+        do a.print();
+        return;
+    }
+}

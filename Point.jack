@@ -1,0 +1,27 @@
+class Point {
+    field int x, y;
+
+    constructor Point new(int ax, int ay) {
+        let x = ax;
+        let y = ay;
+
+        return this;
+    }
+
+    method int getX() {
+        return x;
+    }
+
+    method int getY() {
+        return y;
+    }
+
+    method void print() {
+        do Output.printString("Point(");
+        do Output.printInt(x);
+        do Output.printString(", ");
+        do Output.printInt(y);
+        do Output.printString(")");
+        return;
+    }
+}
