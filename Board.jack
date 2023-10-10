@@ -1,0 +1,17 @@
+class Board {
+    field Array bricks;
+
+    constructor Board new() {
+        return this;
+    }
+
+    method void init() {
+        do Screen.clearScreen();
+        return;
+    }
+
+    method void initBrick() {
+
+        return;
+    }
+}
