@@ -1,8 +1,9 @@
 class Main {
     function void main() {
-        do Screen.clearScreen();
-        do Screen.drawRectangle(0, 0, 10*12, 10*23);
-        do Screen.setColor(false);
+        var Board board;
+        let board = Board.new();
+        do board.init();
+        do board.draw();
         return;
     }
 }

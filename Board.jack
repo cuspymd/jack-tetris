@@ -1,22 +1,76 @@
 class Board {
     field Array bricks;
+    field int width, height, thickness;
 
     constructor Board new() {
+        let width = 12;
+        let height = 24;
+        let thickness = 10;
         return this;
     }
 
     method void init() {
-        
+        do initBrick();
         return;
     }
 
     method void draw() {
+        do Screen.clearScreen();
+        do drawBricks();
         return;
     }
 
     method void initBrick() {
-        let bricks = Array.new(12);
+        var int i, j;
+        var Array brickRows;
+        
+        let i = 0;
+        let bricks = Array.new(width);
+        
+        while (i < width) {
+            let brickRows = Array.new(height);
+            let j = 0;
+            
+            while (j < height) {
+                let brickRows[j] = false;
+                if (i = 0) {
+                    let brickRows[j] = true;
+                }
+                if (i = (width-1)) {
+                    let brickRows[j] = true;
+                }
+                if (j = (height-1)) {
+                    let brickRows[j] = true;
+                }
+                let j = j + 1;
+            }
+            let bricks[i] = brickRows;
+            let i = i + 1; 
+        }
+        return;
+    }
 
+    method void drawBricks() {
+        var int i, j;
+        var int x, y;
+        var Array brickRows;
+
+        let i = 0;
+
+        while (i < width) {
+            let brickRows = bricks[i];
+            let j = 0;
+
+            while (j < height) {
+                let x = i * thickness;
+                let y = j * thickness;
+
+                do Screen.setColor(brickRows[j]);
+                do Screen.drawRectangle(x, y, x + thickness-1, y + thickness-1);
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
         return;
     }
 }
