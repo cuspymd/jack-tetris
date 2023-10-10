@@ -6,11 +6,16 @@ class Board {
     }
 
     method void init() {
-        do Screen.clearScreen();
+        
+        return;
+    }
+
+    method void draw() {
         return;
     }
 
     method void initBrick() {
+        let bricks = Array.new(12);
 
         return;
     }
