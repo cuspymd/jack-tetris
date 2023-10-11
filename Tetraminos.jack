@@ -15,7 +15,10 @@ class Tetraminos {
         var Array pieceRow2;
         var Array pieceRow3;
 
-        let tetraminos = Array.new(7);
+        var int size;
+
+        let size = 7;
+        let tetraminos = Array.new(size);
 
         let pieceI = Array.new(4);
         let pieceJ = Array.new(4);
@@ -261,5 +264,9 @@ class Tetraminos {
         let pieceRow = piece[rowNum];
 
         return pieceRow[colNum];
+    }
+
+    method int getSize() {
+        return size;
     }
 }

@@ -73,4 +73,25 @@ class Board {
         }
         return;
     }
+
+    method boolean getBrick(int x, int y) {
+        var Array brickRows;
+        let brickRows = bricks[x];
+        return brickRows[y];
+    }
+
+    method void setBrick(int x, int y, boolean brick) {
+        var Array brickRows;
+        let brickRows = bricks[x];
+        let brickRows[y] = brick;
+        return;
+    }
+
+    method int getHeight() {
+        return height;
+    }
+
+    method int getWidth() {
+        return width;
+    }
 }

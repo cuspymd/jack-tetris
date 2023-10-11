@@ -1,3 +1,139 @@
 class Tetris {
-    
+    var Point pieceOrigin;
+    var int currentPiece;
+    var int currentRotation;
+    var Board board;
+    var Tetraminos tetraminos;
+
+    constructor Tetris new() {
+        let board = Board.new();
+        let tetraminos = Tetraminos.new();
+        let currentPiece = -1;
+        return this;
+    }
+
+    method void init() {
+        board.init();
+        newPiece();
+        return;
+    }
+
+    method void newPiece() {
+        let pieceOrigin = Point.new(5, 1);
+        let currentRotation = 0;
+
+        let currentPiece = currentPiece + 1;
+        if (currentPiece = tetraminos.getSize()) {
+            let currentPiece = 0;
+        }
+        return;
+    }
+
+    method boolean collideAt(int x, int y, int rotation) {
+        var Point piecePoint;
+        var boolean brick;
+        var int i;
+
+        let i = 0;
+        while (i < 4) {
+            let piecePoint = tetraminos.get(currentPiece, currentRotation, i);
+            let brick = board.getBrick(piecePoint.getX() + x, piecePoint.getY() + y);
+            if (~brick) {
+                return true;
+            } 
+            let i = i + 1;
+        }
+        return false;
+    }
+
+    method void rotate(int i) {
+        var int newRotation;
+        let newRotation = currentRotation + i;
+        if (newRotation = 4) {
+            let newRotation = 0;
+        }
+        if (newRotation = -1) {
+            let newRotation = 3;
+        }
+
+        if (~collideAt(pieceOrigin.getX(), pieceOrigin.getY(), newRotation)) {
+            let currentRotation = newRotation;
+            do redraw();
+        }
+        return;
+    }
+
+    method void move(int i) {
+        if (~collideAt(pieceOrigin.getX() + i, pieceOrigin.getY(), currentRotation)) {
+            do pieceOrigin.setX(pieceOrigin.getX() + i);
+            do redraw();
+        }
+        return;
+    }
+
+    method void dropDown() {
+        if (collideAt(pieceOrigin.getX(), pieceOrigin.getY() + i, currentRotation)) {
+            do placeToBoard();
+        } else {
+            do pieceOrigin.setY(pieceOrigin.getY() + i);
+        }
+        do redraw();
+        return;
+    }
+
+    method void placeToBoard() {
+        var Point piecePoint;
+        var int i;
+
+        let i = 0;
+        while (i < 4) {
+            let piecePoint = tetraminos.get(currentPiece, currentRotation, i);
+            do board.setBrick(pieceOrigin.getX() + piecePoint.getX(), pieceOrigin.getY() + piecePoint.getY(), true);
+            let i = i + 1;
+        }
+        do clearRows();
+        do newPiece(); 
+    }
+
+    method void clearRows() {
+        var boolean isFool;
+        var int i, j;
+
+        let j = board.getHeight() - 1;
+        while (j > 0) {
+            let isFool = true;
+            let i = 1;
+            while (i < (board.getWidth()-1)) {
+                if (isFool) {
+                    if (~board.getBrick(i, j)) {
+                       let isFool = false;
+                    }
+                }
+                let i = i + 1;
+            }
+            if (isFool) {
+                do deleteRow(j);
+            }
+            let j = j - 1;
+        }
+    }
+
+    method void deleteRow(int row) {
+        var int i, j;
+        let j = row - 1;
+        while (j > 0) {
+            let i = 1;
+            while (i < board.getWidth()-1) {
+                do board.setBrick(i, j+1, board.getBrick(i, j));
+                let i = i + 1;
+            }
+
+            let j = j - 1;
+        }
+    }
+
+    method void redraw() {
+        
+        return;
+    }
 }

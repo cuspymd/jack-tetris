@@ -16,6 +16,16 @@ class Point {
         return y;
     }
 
+    method void setX(int ax) {
+        let x = ax;
+        return;
+    }
+
+    method void setY(int ay) {
+        let y = ay;
+        return;
+    }
+
     method void print() {
         do Output.printString("Point(");
         do Output.printInt(x);
