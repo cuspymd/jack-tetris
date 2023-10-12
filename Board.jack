@@ -15,7 +15,6 @@ class Board {
     }
 
     method void draw() {
-        do Screen.clearScreen();
         do drawBricks();
         return;
     }
@@ -93,5 +92,9 @@ class Board {
 
     method int getWidth() {
         return width;
+    }
+
+    method int getThickness() {
+        return thickness;
     }
 }

@@ -1,9 +1,9 @@
 class Main {
     function void main() {
-        var Board board;
-        let board = Board.new();
-        do board.init();
-        do board.draw();
+        var Tetris tetris;
+        let tetris = Tetris.new();
+
+        do tetris.run();
         return;
     }
 }
