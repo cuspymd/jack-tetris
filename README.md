@@ -2,6 +2,10 @@
 
 This repository contains a simple implementation of the classic Tetris game using the Jack programming language, as described in Chapter 9 of the [Nand to Tetris](https://www.nand2tetris.org/) course. Jack is a high-level language that can be compiled to VM code and run on the Hack platform.
 
+## Screenshot
+
+![jack-tetris](./jack-tetris.PNG)
+
 ## Prerequisites
 
 To build and run this Tetris game, you'll need the following tools:
