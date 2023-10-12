@@ -1,5 +1,6 @@
 class Tetraminos {
     field Array tetraminos;
+    field int size;
 
     constructor Tetraminos new() {
         var Array pieceI;
@@ -14,8 +15,6 @@ class Tetraminos {
         var Array pieceRow1;
         var Array pieceRow2;
         var Array pieceRow3;
-
-        var int size;
 
         let size = 7;
         let tetraminos = Array.new(size);

@@ -1,9 +1,9 @@
 class Tetris {
-    var Point pieceOrigin;
-    var int currentPiece;
-    var int currentRotation;
-    var Board board;
-    var Tetraminos tetraminos;
+    field Point pieceOrigin;
+    field int currentPiece;
+    field int currentRotation;
+    field Board board;
+    field Tetraminos tetraminos;
 
     constructor Tetris new() {
         let board = Board.new();
@@ -13,8 +13,8 @@ class Tetris {
     }
 
     method void init() {
-        board.init();
-        newPiece();
+        do board.init();
+        do newPiece();
         return;
     }
 
@@ -72,10 +72,10 @@ class Tetris {
     }
 
     method void dropDown() {
-        if (collideAt(pieceOrigin.getX(), pieceOrigin.getY() + i, currentRotation)) {
+        if (collideAt(pieceOrigin.getX(), pieceOrigin.getY() + 1, currentRotation)) {
             do placeToBoard();
         } else {
-            do pieceOrigin.setY(pieceOrigin.getY() + i);
+            do pieceOrigin.setY(pieceOrigin.getY() + 1);
         }
         do redraw();
         return;
@@ -93,6 +93,7 @@ class Tetris {
         }
         do clearRows();
         do newPiece(); 
+        return;
     }
 
     method void clearRows() {
@@ -116,6 +117,7 @@ class Tetris {
             }
             let j = j - 1;
         }
+        return;
     }
 
     method void deleteRow(int row) {
@@ -130,6 +132,7 @@ class Tetris {
 
             let j = j - 1;
         }
+        return;
     }
 
     method void redraw() {
